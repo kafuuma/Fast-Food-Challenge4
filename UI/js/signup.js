@@ -38,8 +38,18 @@ fetch(
 })
 .then(function(resdata){
   console.log(resdata);
-  console.log(resdata.json(["message"]));
+  console.log(resdata.json());
   console.log(resdata.status)
+  if(resdata.status == 201){
+    document.getElementById("log2").style.display="block";
+    document.getElementById("log1").style.display="none";
+    alert(resdata.json(["message"]));
+  }
+  else{
+    document.getElementById("log2").style.display="none";
+    document.getElementById("log1").style.display="block";
+    alert(resdata.json(["message"]));
+  }
 })
 .catch(function(error){
     console.log(error)
