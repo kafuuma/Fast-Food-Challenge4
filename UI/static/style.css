@@ -253,6 +253,7 @@ a{
 }
 
 input[type="text"],
+input[type="number"],
 input[type="email"],
 input[type="password"]{
     padding: 11px;
@@ -530,8 +531,10 @@ select{
     position: fixed;
 }
 
-.menu-input input[type="text"], textarea{
+.menu-input input[type="number"],
+input[type="text"], textarea{
     width: 251px;
+    width: 70%;
     padding: 13px 8px
 }
 

@@ -17,7 +17,7 @@ function start_up(){
         admin_actions.addEventListener("click", showAdmin_actions,false);
         console.log(admin_actions)
     }
-    if(add_menu){
+    if(addmenu){
         addmenu.addEventListener("click", show_menu_item, false);
     }
 
