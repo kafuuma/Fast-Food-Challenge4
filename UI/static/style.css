@@ -21,17 +21,6 @@ body{
     padding-left: 53px;
 }
 
-/* .nav-bar input{
-    padding: 21px;
-    margin: 26px;
-    margin-left: 11%;
-    width: 46%;
-    border-radius: 40px;
-    border-color: orangered;
-    position: static;
-
-
-} */
 #search{
     padding: 21px;
     margin: 26px;
@@ -475,9 +464,116 @@ select{
     display: none;
 }
 
+.dropbtn {
+    color: black;
+    padding: 24px 7px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    margin: -5px 41px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    color: #fff;
+}
+
+.actions {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: relative;
+    background-color: #fff;
+    min-width: 66px;
+    height: 236px;
+    padding: 0px 57px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border: 1px solid #e0d3d3;
+    margin-top: 60px;
+}
 
 
+.dropdown-content li {
+    color: orangered;
+    padding: 9px 12px;
+    text-decoration: none;
+    display: block;
+    margin: 20px -38px;
+    font-family: "Muli", "Merriweather", "Georgia", serif;
+    font-size: 15px;
+    font-weight: 400;
+    outline-color: rgb(74, 74, 74);
+    text-transform: uppercase;
+}
 
+.dropdown-content li:hover {background-color: #ddd}
+
+.menu-block{
+    display:none;
+    background-color: white;
+    width: 360px;
+    height: 380px;
+    float: left;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
+    border-color: rgb(235, 235, 235);
+    margin-left: 5%;
+    margin-top: 1px;
+    padding: 50px 0px 0px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    z-index: 2;
+    position: fixed;
+}
+
+.menu-input input[type="text"], textarea{
+    width: 251px;
+    padding: 13px 8px
+}
+
+textarea{
+    width: 255px;
+    height: 102px;
+    margin: 8px 45px;
+}
+.menu-input input[type="submit"]{
+    width: 271px;
+    padding: 13px 8px 
+}
+
+.order-block{
+    display:none;
+    background-color: white;
+    width: 207px;
+    height: 65px;
+    float: left;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
+    border-color: rgb(235, 235, 235);
+    margin-left: 41%;
+    margin-top: 123px;
+    padding: 48px 6px 2px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    z-index: 2;
+    position: fixed;
+}
+
+.order-block input[type="text"]{
+    width: 158px;
+    padding: 10px 7px;
+    margin-left: 12px;
+    display: flex;
+    margin-top: -42px;
+}
+
+.order-block input[type="submit"]{
+    width: 177px;
+    padding: 8px 0px;
+    margin-left: 12px;
+}
 
 
 
