@@ -519,7 +519,7 @@ select{
     display:none;
     background-color: white;
     width: 360px;
-    height: 380px;
+    height: 435px;
     float: left;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
     border-color: rgb(235, 235, 235);
@@ -578,5 +578,36 @@ textarea{
     margin-left: 12px;
 }
 
+.dropdown-conts {
+    display:none;
+    position: fixed;
+    background-color: #fff;
+    width: 61px;
+    height: 144px;
+    padding: 0px 57px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 2;
+    border: 1px solid #e0d3d3;
+    margin-top: 1px;
+    float: right;
+    margin-left: 75%;
+}
 
+.action {
+    position: absolute;
+    display: inline-block;
+}
+.dropdown-conts li {
+    color: orangered;
+    padding: 9px 12px;
+    text-decoration: none;
+    display: block;
+    margin: 20px -38px;
+    font-family: "Muli", "Merriweather", "Georgia", serif;
+    font-size: 15px;
+    font-weight: 400;
+    outline-color: rgb(74, 74, 74);
+    text-transform: uppercase;
+}
 
+.dropdown-conts li:hover {background-color: #ddd}
