@@ -6,6 +6,7 @@ function start_up(){
     var cart  =  document.getElementById("cart");
     let addmenu = document.getElementById("addmenu");
     var admin_actions = document.getElementById("actions");
+    var user_actions = document.getElementById("user_actions")
     var shw_order = document.getElementById("vieworder");
     if (cart){
         cart.addEventListener("click", shwCurt,false)}
@@ -17,6 +18,9 @@ function start_up(){
         admin_actions.addEventListener("click", showAdmin_actions,false);
         console.log(admin_actions)
     }
+     if(user_actions){
+         user_actions.addEventListener("click",showUser_actions,false);
+     }
     if(addmenu){
         addmenu.addEventListener("click", show_menu_item, false);
     }
@@ -47,6 +51,7 @@ function showLogin()
 
 function shwCurt(){
     document.getElementById("cat-box").style.display="block";
+    document.getElementById("dropdown").style.display="none";
 }
 
 function showAdmin_actions(){
@@ -63,4 +68,12 @@ function show_menu_item(){
 function show_order(){
     document.getElementById("order-block").style.display="block";
 }
+
+function showUser_actions(){
+    console.log("method user actions called");
+    document.getElementById("dropdown").style.display="block";
+    document.getElementById("cat-box").style.display="none";
+}
+
+
 

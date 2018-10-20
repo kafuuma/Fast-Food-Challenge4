@@ -8,12 +8,21 @@ function startMenuActions(){
     let logout = document.getElementById("log-out");
     let addmenu = document.getElementById("add-menu");
     let getmenu = document.getElementById("displaymenu");
+    let user_menu = document.getElementById("menu");
     let vieworder = document.getElementById("vieworder");
     let allorders = document.getElementById("allorders");
     let update_status = document.getElementById("status");
     logout.addEventListener("click", logOut, false);
-    addmenu.addEventListener("submit", add_menu, false);
+    if(addmenu){
+        addmenu.addEventListener("submit", add_menu, false);
+    }
+   if (getmenu){
     getmenu.addEventListener("click", fetch_all_menu, false);
+   }
+   if(user_menu){
+    user_menu.addEventListener("click", fetch_all_menu, false);   
+   }
+   
 
 }
 
@@ -24,11 +33,12 @@ function add_menu(e){
     var menu_name_= document.getElementById("menu_name").value;
     var menu_price_ = document.getElementById("menu_price").value;
     var desciption_ = document.getElementById("desciption").value;
-
+    var image_ = document.getElementById("image").value;
     menu_data = {
             menu_name: menu_name_,
             menu_price: menu_price_,
-            description: desciption_
+            description: desciption_,
+            image:image_
     }
     fetch(url,
         {
@@ -89,33 +99,30 @@ function fetch_all_menu(e){
             if(resdata["message"]=="successfuly fetched all menu"){
             let menu =resdata["menu"];
             let header = `
-    
-            <table class="table-data" id="admin-history">
-                <thead>
-                    <tr>
-                        <th>Menu_Id</th>
-                        <th>Order</th>
-                        <th>Description</th>
-                        <th>Menu Price</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <section class="products" id="float"> 
+               <div class="container">
             
             `;
             menu.forEach(function(menu_item){
               header  += `
-                <tr>
-                    <td>${menu_item.menu_id}</td>
-                    <td>${menu_item.menu_name}</td>
-                    <td>${menu_item.description}</td>
-                    <td>${menu_item.menu_price}</td>
-                </tr>
+              <div class="column">
+                <img src="${"images/"+menu_item.menu_image}" alt="${menu_item.menu_name}">
+                <p class="info">
+                    ${menu_item.menu_name}<br>
+                    <span>${menu_item.description}</span>
+                </p>
+                <p class="price">
+                    ${menu_item.menu_price+"Ush"}
+                    <input type="checkbox" id="${menu_item.menu_id}">
+                </p>     
+              </div>
                 `;
             });
-            let display_menu = header+"</tbody></table>";
               
-            //    window.location.reload();
-               document.getElementById("fetch_menu").innerHTML = display_menu;
+            // window.location.reload();
+            console.log(document.getElementById("fetch_menu"));
+               document.getElementById("fetch_menu").innerHTML = header;
+               
                document.getElementById("dropdown").style.display="none";
             }
             else{
@@ -133,7 +140,6 @@ function fetch_all_menu(e){
 
 function logOut(){
     localStorage.setItem("auth-token",null);
-    console.log(localStorage["auth-token"]);
     redirect:window.location.replace("./signup.html")
 }
 
