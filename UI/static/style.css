@@ -379,11 +379,12 @@ ul li{
    
 }
 
-#cat-text{
+.cat-text{
     margin-top: 186px;
     margin-left: 112px;
     
 }
+
 #cat-info{
   
     margin-top: 46px;
@@ -404,6 +405,7 @@ ul li{
     margin-top: 56px;
     margin-left: 107px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 24px 3px;
 }
 
 .table-data thead th{
@@ -426,6 +428,12 @@ table tr:nth-child(even){
     background-color: whitesmoke;
 }
 
+table thead{
+    background-color: whitesmoke;
+    text-align: center;
+    font-weight: bolder;
+    font-size: larger;
+}
 select{
     width: 126px;
     padding: 3%;

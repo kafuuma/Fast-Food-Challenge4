@@ -113,7 +113,7 @@ function fetch_all_menu(e){
                 </p>
                 <p class="price">
                     ${menu_item.menu_price+"Ush"}
-                    <input type="checkbox" id="${menu_item.menu_id}">
+                    <input type="checkbox" class="checkbox" id="${menu_item.menu_id}">
                 </p>     
               </div>
                 `;

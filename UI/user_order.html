@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="static/style.css">
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/menu.js"></script>
+    <script type="text/javascript" src="js/orders.js"></script>
     <title>Fast Food App</title>
 </head>
 <body>
@@ -24,7 +25,7 @@
             <li id="history" >view orders</li>
         </ul>
     </div>  
-    <form action="user_history.html" id="cat_log" method="POST">
+    <form action="" id="cat_log" >
         <div class = "cat-box hidden" id="cat-box">
             <div id="cat-info">
                 <h1>Delivery in 30 minutes</h1>
@@ -32,7 +33,7 @@
             <div id="cat-log">
                 <img src="images/empty-cart.svg" alt="cat-logo" height="100px" width="100px">
             </div>
-            <div id = "cat-text">
+            <div class = "cat-text">
                 </h1>Order your favourite dishes</h1>
             </div>   
             <div id="field" >
@@ -53,6 +54,7 @@
         </ul>
     </div>
     <div id="fetch_menu"></div>
+    <div id="user_orders"></div>
     <footer class="footer">
         <ul class="footer-nav-links">
             <li>
