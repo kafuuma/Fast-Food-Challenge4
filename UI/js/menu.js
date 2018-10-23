@@ -120,9 +120,12 @@ function fetch_all_menu(e){
             });
               
             // window.location.reload();
-            console.log(document.getElementById("fetch_menu"));
+            
+              if( document.getElementById("user_orders")){
+                document.getElementById("user_orders").style.display="none";
+              }
+               document.getElementById("fetch_menu").style.display="block";
                document.getElementById("fetch_menu").innerHTML = header;
-               
                document.getElementById("dropdown").style.display="none";
             }
             else{
