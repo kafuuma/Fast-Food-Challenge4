@@ -23,8 +23,6 @@ function signUp(e){
             confirm_password: confirm_password_
     }
 fetch(
-
-    
     "http://127.0.0.1:5000/api/v1/auth/signup",
     {
         method: "POST",
@@ -42,18 +40,30 @@ fetch(
       if(resdata["message"] =="signup successfull"){
         document.getElementById("log2").style.display="block";
         document.getElementById("log1").style.display="none";
+        showError(resdata["message"], "success");
       }
       else{
         document.getElementById("log2").style.display="none";
         document.getElementById("log1").style.display="block";
+        showError(resdata["message"], "error");
       }
-      alert(resdata["message"]);
     })  
-    .catch(function(error){
+    .catch(function(err){
+        showError(err, "error");
         console.log(error)
     });
     }
     
-    
-        
+
+    function showError(message,className){
+        const div = document.createElement("div");
+        div.className=className;    
+        div.appendChild(document.createTextNode(message));
+        const container = document.querySelector("#log1");
+        const form = document.querySelector("#signup");
+        container.insertBefore(div, form);
+        setTimeout(function(){
+            document.querySelector(`.${className}`).remove();
+        },3000);
+    }
 
