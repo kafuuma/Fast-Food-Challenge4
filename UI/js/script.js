@@ -16,7 +16,6 @@ function start_up(){
     signin.addEventListener("click",showLogin, false);}
     if(admin_actions){
         admin_actions.addEventListener("click", showAdmin_actions,false);
-        console.log(admin_actions)
     }
      if(user_actions){
          user_actions.addEventListener("click",showUser_actions,false);
@@ -28,9 +27,6 @@ function start_up(){
     if(shw_order){
         shw_order.addEventListener("click", show_order,false);
     }
-    console.log(signin);
-    console.log(signup);
-    console.log(cart);
 }
 
 function showSignUp()
@@ -39,7 +35,6 @@ function showSignUp()
     document.getElementById("log2").style.display="none";
     console.log("signup clicked")
 }
-
 
 function showLogin()
 {

@@ -9,9 +9,6 @@ function startMenuActions(){
     let addmenu = document.getElementById("add-menu");
     let getmenu = document.getElementById("displaymenu");
     let user_menu = document.getElementById("menu");
-    let vieworder = document.getElementById("vieworder");
-    let allorders = document.getElementById("allorders");
-    let update_status = document.getElementById("status");
     logout.addEventListener("click", logOut, false);
     if(addmenu){
         addmenu.addEventListener("submit", add_menu, false);
@@ -22,8 +19,6 @@ function startMenuActions(){
    if(user_menu){
     user_menu.addEventListener("click", fetch_all_menu, false);   
    }
-   
-
 }
 
 //add menu
@@ -57,23 +52,17 @@ function add_menu(e){
             console.log(resdata);
             console.log(resdata["message"]);
             if(resdata["message"]=="menu successfuly created"){
-                document.location.reload();
+                showErrorAddmenu(resdata["message"], "success");
             }
             else{
                 document.getElementById("menu-block").style.display="block";
+                showErrorAddmenu(resdata["message"], "error");
             }
-            alert(resdata["message"]);
         })  
         .catch(function(error){
             console.log(error)
         });
     }
-
-function logOut(){
-    localStorage.setItem("auth-token",null);
-    console.log(localStorage["auth-token"]);
-    redirect:window.location.replace("./signup.html")
-}
 
 //fetch all menu
 
@@ -127,22 +116,46 @@ function fetch_all_menu(e){
                document.getElementById("fetch_menu").style.display="block";
                document.getElementById("fetch_menu").innerHTML = header;
                document.getElementById("dropdown").style.display="none";
+               showError(resdata["message"], "success_menu");
             }
             else{
-                document.location.reload();
-                document.getElementById("order-block").innerHTML = resdata["message"];
+                
+                document.getElementById("dropdown").style.display="none";
+                showError(resdata["message"], "error_menu");
             }
-            alert(resdata["message"]);
         })  
         .catch(function(error){
             console.log(error)
         });
         }
+function showError(message,className){
+    const div = document.createElement("div");
+    div.className=className;    
+    div.appendChild(document.createTextNode(message));
+    const container = document.querySelector("#res_message");
+    const before = document.querySelector("#after");
+    container.insertBefore(div, before);
+    setTimeout(function(){
+        document.querySelector(`.${className}`).remove();
+    },3000);
+}
 
-
+function showErrorAddmenu(message,className){
+    const div = document.createElement("div");
+    div.className=className;    
+    div.appendChild(document.createTextNode(message));
+    const container = document.querySelector("#menu-block");
+    const form = document.querySelector("#add-menu");
+    container.insertBefore(div, form);
+    setTimeout(function(){
+        document.querySelector(`.${className}`).remove();
+    },3000);
+        
+}
 
 function logOut(){
     localStorage.setItem("auth-token",null);
     redirect:window.location.replace("./signup.html")
 }
+
 

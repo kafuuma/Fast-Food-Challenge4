@@ -12,9 +12,6 @@ function startOrderActions(){
     let vieworder = document.getElementById("history");
     let allorders = document.getElementById("allorders");
     let singleorder = document.getElementById("singleorder");
-    let order_table = document.getElementsByName("table")
-    console.log(order_table)
-    // let update_status = document.getElementById("status");
     logout.addEventListener("click", logOut, false);
     if(singleorder){
        singleorder.addEventListener("submit",Fetch_single_order, false);
@@ -31,14 +28,9 @@ function startOrderActions(){
     if(allorders){
         allorders.addEventListener("click", Fetch_orders,false);
     }
-
-    if(order_table){
-        console.log(order_table)
-        order_table[0].addEventListener("click", Update_order_status,false);
-    }
 }
 
-//customise it to ordes
+//place order
 function place_order(e){
     e.preventDefault();
     let selected = document.querySelectorAll(".checkbox");
@@ -108,8 +100,6 @@ function Fetch_orders(e){
          if(resdata["message"]=="successfully fetched orders"){
                 console.log(resdata["orders"]);
                 let orders =resdata["orders"];
-            console.log(order_node_user)
-            console.log(order_admin_node)
                 if(order_node_user){
                     var header_user = `
             
@@ -160,10 +150,10 @@ function Fetch_orders(e){
                         header_admin += `
                         </tr>
                             <td>9.13.2018</td>
-                            <td  class="order-id">${order.order_id}</td>
+                            <td id_data="order_id">${order.order_id}</td>
                             <td>${order.menu_id}</td>
                             <td>${order.email}</td>
-                            <td>${status}</td>
+                            <td status_data="status">${status}</td>
                             <td><button class="update-status">Update</button></td>
                         </tr>
                         `;
@@ -178,10 +168,13 @@ function Fetch_orders(e){
                 document.getElementById("user_orders").innerHTML = display_orders_user;
                 document.getElementById("cat-box").style.display="none";
                 document.getElementById("user_orders").style.display="block"
+                showError(resdata["message"], "success_menu");
                 }
                 if(order_admin_node){
                 document.getElementById("all_orders").innerHTML = display_orders_admin;
+                showError(resdata["message"], "success_menu");
                 document.getElementById("all_orders").style.display="block"
+                Update_order_status();
                 }
                 
                 document.getElementById("fetch_menu").style.display="none"
@@ -191,17 +184,16 @@ function Fetch_orders(e){
                 document.getElementById("fetch_menu").style.display="none";
                 document.getElementById("dropdown").style.display="none";
                 if(document.getElementById("cat-box")){
-                    document.getElementById("cat-box").style.display="none";
+                document.getElementById("cat-box").style.display="none";
+                showError(resdata["message"], "error_menu");
                 }
-                // document.getElementById("user_orders").innerHTML = display_orders_admin;
-                // document.getElementById("user_orders").innerHTML = resdata["message"];
             }
-            alert(resdata["message"]);
         })  
         .catch(function(error){
             console.log(error)
         });
-        }
+        
+    }
         
 function Fetch_single_order(e){
     e.preventDefault();
@@ -223,10 +215,11 @@ function Fetch_single_order(e){
         })
         .then(function(resdata){
             console.log(resdata["message"]);
-            if(resdata["message"]=="successfully fetched order"){
+            if(resdata["message"]=="successfully fetched order" && resdata["order"].length !=0){
                 console.log(resdata["order"]);
                 let Order =resdata["order"];
                 var status= generate_order_status(Order[0]);
+               
                 console.log(status);
                     var header_specific = `
             
@@ -247,10 +240,10 @@ function Fetch_single_order(e){
                         header_specific += `
                         </tr>
                             <td>9.13.2018</td>
-                            <td class="order-id">${order.order_id}</td>
+                            <td id_data="order_id">${order.order_id}</td>
                             <td>${order.menu_id}</td>
                             <td>${order.email}</td>
-                            <td>${status}</td>
+                            <td status_data="status">${status}</td>
                             <td><button class="update-status">Update</button></td>
                         </tr>
                         `;
@@ -261,53 +254,56 @@ function Fetch_single_order(e){
                 document.getElementById("fetch_menu").style.display="none";
                 document.getElementById("dropdown").style.display="none";
                 document.getElementById("all_orders").style.display="none";  
-                document.getElementById("fetch_menu").style.display="none";
                 document.getElementById("signle_order").style.display="block";
                 document.getElementById("order-block").style.display="none";
                 document.getElementById("signle_order").innerHTML=display_specific_order;
+                showError(resdata["message"], "success_menu");
+                Update_order_status();
             }
         
             else{
                 document.getElementById("fetch_menu").style.display="none";
                 document.getElementById("dropdown").style.display="none";
-                document.getElementById("all_orders").style.display="none"  
-                document.getElementById("fetch_menu").style.display="none"
-                document.getElementById("signle_order").innerHTML = resdata["message"];
+                document.getElementById("all_orders").style.display="none" 
+                document.getElementById("order-block").style.display="none"; 
+                showError(resdata["message"], "error_menu"); 
                 
             }
-            alert(resdata["message"]);
         })  
         .catch(function(error){
             console.log(error)
         });
-        }
+    }
 
-
-function Update_order_status(e){
+function Update_order_status(){
+    console.log("update order status funtion called")
     // e.preventDefault();
+    let order_table = document.querySelector("table")
+    console.log(order_table)
+    order_table.addEventListener("click", function(e){
     var element = e.target, parent;
     if ( element && element.nodeName == "BUTTON" ) {
         parent = element.parentNode
-        console.log(parent)
         while ( parent.nodeName != "TR" ) {
             parent = parent.parentNode
-            console.log(parent)
     }
-    var order_id, order_status, child;
+    var order_id, child;
+    var data = {}
     for ( var i = 0, _len = parent.children.length; i < _len; i++ ) {
         child = parent.children[i]
-        console.log(child)
-
-        if ( child.hasAttribute(".order_id")) data[child.getAttribute(".order_id")] = child.innerText
-        console.log(data)
+        if ( child.hasAttribute("id_data") ) data[child.getAttribute("id_data")] = child.innerText
+        if ( child.hasAttribute("status_data") ){
+        var select = document.querySelector(".status").selectedOptions;
+        var status = select[0].value
+        }
     }
 
+            order_id=data["order_id"]
+            new_status={"status":status}
 
-    new_status={"status":status_}
-    order_id =
     fetch(url2+"/"+order_id,
         {
-            method: "GET",
+            method: "PUT",
             headers:{
                 "content-type":"application/json",
                 "Authentication":localStorage["auth-token"]
@@ -319,17 +315,19 @@ function Update_order_status(e){
             return res.json()
         })
         .then(function(resdata){
-            console.log(resdata["message"]);    
-            alert(resdata["message"]);
+            console.log(resdata["message"]);
+            showError(resdata["message"], "success_menu");    
         })  
         .catch(function(error){
             console.log(error)
         });
     }
+
+   });
 }
 
-
 function generate_order_status(obj){
+   
     let status_string, new_state,pro_state, canc_state, comp_state;
     if(obj.status=="new"){
         new_state="selected", pro_state="", canc_state="",comp_state="";
@@ -351,10 +349,21 @@ function generate_order_status(obj){
     return status_string;
 }
 
-
-
 function logOut(){
     localStorage.setItem("auth-token",null);
     console.log(localStorage["auth-token"]);
     redirect:window.location.replace("./signup.html")
+}
+
+function showError(message,className){
+    const div = document.createElement("div");
+    div.className=className;    
+    div.appendChild(document.createTextNode(message));
+    const container = document.querySelector("#res_message");
+    const before = document.querySelector("#after");
+    container.insertBefore(div, before);
+    setTimeout(function(){
+        document.querySelector(`.${className}`).remove();
+    },3000);
+        
 }

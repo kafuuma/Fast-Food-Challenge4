@@ -34,21 +34,23 @@ fetch(
         console.log(resdata);
         console.log(resdata["message"]);
         console.log(resdata["Authentication"]);
-
         if(resdata["message"]=="login successfull"){
             localStorage.setItem("auth-token", resdata["Authentication"]);
             if(resdata["user_role"]=="user"){
                 redirect:window.location.replace("./user_order.html")
+                showError(resdata["message"], "success");
             }
             if(resdata["user_role"]=="admin"){
-                redirect:window.location.replace("./admin.html")  
+                redirect:window.location.replace("./admin.html")
+                showError(resdata["message"], "success");  
             }
         }
         else{
             document.getElementById("log2").style.display="block";
             document.getElementById("log1").style.display="none";
+            showError(resdata["message"], "error");
+
         }
-        alert(resdata["message"]);
     })  
     .catch(function(error){
         console.log(error)
@@ -56,5 +58,15 @@ fetch(
     }
     
     
-        
-
+    function showError(message,className){
+        const div = document.createElement("div");
+        div.className=className;    
+        div.appendChild(document.createTextNode(message));
+        const container = document.querySelector("#log2");
+        const form = document.querySelector("#login");
+        container.insertBefore(div, form);
+        setTimeout(function(){
+            document.querySelector(`.${className}`).remove();
+        },3000);
+         
+    }
