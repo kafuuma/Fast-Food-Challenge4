@@ -288,7 +288,6 @@ function Update_order_status(){
             parent = parent.parentNode
     }
     var order_id, child;
-    var data = {}
     for ( var i = 0, _len = parent.children.length; i < _len; i++ ) {
         child = parent.children[i]
         if ( child.hasAttribute("id_data") ) data[child.getAttribute("id_data")] = child.innerText
