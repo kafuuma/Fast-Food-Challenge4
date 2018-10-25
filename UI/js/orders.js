@@ -290,6 +290,7 @@ function Update_order_status(){
             parent = parent.parentNode
     }
     var order_id, child;
+    const data = {}
     for ( var i = 0, _len = parent.children.length; i < _len; i++ ) {
         console.log(i)
         child = parent.children[i];
