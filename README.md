@@ -4,8 +4,7 @@
 Challenge UI Front End has been Designed to consume Fast Food\
 challenge API from challenge 3
 Frond End UI hosted on [Heroku](https://ffood-ui.herokuapp.com/UI/signup.html)
-![screenshot from 2018-10-25 23-46-41]
-(https://user-images.githubusercontent.com/39337548/47531521-8c0b5300-d8b6-11e8-904d-a4d62dd4304f.png)
+![screenshot from 2018-10-25 23-46-41](https://user-images.githubusercontent.com/39337548/47531521-8c0b5300-d8b6-11e8-904d-a4d62dd4304f.png)
 
 
 ## PROJECT FEATURES
