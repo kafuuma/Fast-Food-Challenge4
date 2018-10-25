@@ -291,7 +291,9 @@ function Update_order_status(){
     }
     var order_id, child;
     for ( var i = 0, _len = parent.children.length; i < _len; i++ ) {
-        child = parent.children[i]
+        console.log(i)
+        child = parent.children[i];
+        console.log(child);
         if ( child.hasAttribute("id_data") ) data[child.getAttribute("id_data")] = child.innerText
         if ( child.hasAttribute("status_data") ){
         var select = document.querySelector(".status").selectedOptions;
