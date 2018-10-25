@@ -1,5 +1,4 @@
-# Fast-Food-Challenge4
-# Front End UI Design
+# Fast-Food-Challenge4/Front End UI Design
 
 ## PROJECT PREVIEW
 Challenge UI Front End has been Designed to consume Fast Food\
@@ -28,7 +27,7 @@ Frond End UI hosted on [Heroku](https://ffood-ui.herokuapp.com/UI/signup.html)
 
 ## USING THE APP
 
-1. Click [Link]((https://ffood-ui.herokuapp.com/UI/signup.html)
+1. Click [Link](https://ffood-ui.herokuapp.com/UI/signup.html)
 2. Create an account
 3. Login
 4. Fetch Menu
