@@ -2,8 +2,8 @@
 
 //access token
 console.log(localStorage["auth-token"]);
-let url1="https://fastfasatfood.herokuapp.com/api/v1/users/orders";
-let url2="https://fastfasatfood.herokuapp.com/api/v1/orders";
+let url1="http://127.0.0.1:5000/api/v1/users/orders";
+let url2="http://127.0.0.1:5000/api/v1/orders";
 
 window.addEventListener("load", startOrderActions);
 function startOrderActions(){
@@ -59,10 +59,11 @@ function place_order(e){
         .then(function(resdata){
             console.log(resdata["message"]);
             if(resdata["message"]=="successfuly placed food order"){
-            document.getElementById("cat-box").style.display="none";
-            alert(resdata["message"]);
+            // document.getElementById("cat-box").style.display="none";
+            showErrorPlacerOrder(resdata["message"],"success_menu_order")
         }
         else{
+            showErrorPlacerOrder(resdata["message"],"error_menu_order")
             console.log(resdata["message"]);
         }
         })  
@@ -360,6 +361,20 @@ function showError(message,className){
     div.appendChild(document.createTextNode(message));
     const container = document.querySelector("#res_message");
     const before = document.querySelector("#after");
+    container.insertBefore(div, before);
+    setTimeout(function(){
+        document.querySelector(`.${className}`).remove();
+    },3000);
+        
+}
+
+function showErrorPlacerOrder(message,className){
+    console.log("method show error order called")
+    const div = document.createElement("div");
+    div.className=className;    
+    div.appendChild(document.createTextNode(message));
+    const container = document.querySelector("#cat-box");
+    const before = document.querySelector("#field");
     container.insertBefore(div, before);
     setTimeout(function(){
         document.querySelector(`.${className}`).remove();

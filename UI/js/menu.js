@@ -1,7 +1,7 @@
 
 //access token
 console.log(localStorage["auth-token"]);
-let url="https://fastfasatfood.herokuapp.com/api/v1/menu";
+let url="http://127.0.0.1:5000/api/v1/menu";
 
 window.addEventListener("load", startMenuActions);
 function startMenuActions(){
@@ -112,6 +112,9 @@ function fetch_all_menu(e){
             
               if( document.getElementById("user_orders")){
                 document.getElementById("user_orders").style.display="none";
+              }
+              if(document.getElementById("all_orders")){
+                document.getElementById("all_orders").style.display="none";
               }
                document.getElementById("fetch_menu").style.display="block";
                document.getElementById("fetch_menu").innerHTML = header;
