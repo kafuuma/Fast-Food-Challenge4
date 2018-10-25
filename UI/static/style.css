@@ -684,3 +684,28 @@ textarea{
     font-weight: bold;
     text-transform: capitalize;
 }
+
+.success_menu_order{
+    display: block;
+    color: green;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    font-family: monospace;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.error_menu_order{
+    display: block;
+    color:red;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    font-family: monospace;
+    font-weight: bold;
+    text-transform: capitalize;
+
+}
