@@ -2,8 +2,8 @@
 
 //access token
 console.log(localStorage["auth-token"]);
-let url1="http://127.0.0.1:5000/api/v1/users/orders";
-let url2="http://127.0.0.1:5000/api/v1/orders";
+let url1="https://fastfasatfood.herokuapp.com/api/v1/users/orders";
+let url2="https://fastfasatfood.herokuapp.com/api/v1/orders";
 
 window.addEventListener("load", startOrderActions);
 function startOrderActions(){
@@ -172,6 +172,7 @@ function Fetch_orders(e){
                 showError(resdata["message"], "success_menu");
                 }
                 if(order_admin_node){
+                    document.getElementById("signle_order").style.display="none";
                 document.getElementById("all_orders").innerHTML = display_orders_admin;
                 showError(resdata["message"], "success_menu");
                 document.getElementById("all_orders").style.display="block"
