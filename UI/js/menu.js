@@ -1,7 +1,7 @@
 
 //access token
 console.log(localStorage["auth-token"]);
-let url="https://fastfasatfood.herokuapp.com/api/v1/menu";
+let url="https://fast-food-reactify.herokuapp.com/api/v1/menu";
 
 window.addEventListener("load", startMenuActions);
 function startMenuActions(){
