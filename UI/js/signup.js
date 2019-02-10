@@ -23,9 +23,7 @@ function signUp(e){
             confirm_password: confirm_password_
     }
 fetch(
-
-    
-    "http://127.0.0.1:5000/api/v1/auth/signup",
+    "https://fast-food-reactify.herokuapp.com/api/v1/auth/signup",
     {
         method: "POST",
         headers:{
@@ -42,18 +40,30 @@ fetch(
       if(resdata["message"] =="signup successfull"){
         document.getElementById("log2").style.display="block";
         document.getElementById("log1").style.display="none";
+        showError2(resdata["message"], "success");
+        showError(resdata["message"], "success");
       }
       else{
+        showError2(resdata["message"], "error");
         document.getElementById("log2").style.display="none";
         document.getElementById("log1").style.display="block";
       }
-      alert(resdata["message"]);
     })  
     .catch(function(error){
-        console.log(error)
+        showError2(error, "error");
     });
+ }
+    
+
+    function showError2(message,className){
+        const div = document.createElement("div");
+        div.className=className;    
+        div.appendChild(document.createTextNode(message));
+        const container = document.querySelector("#log1");
+        const form = document.querySelector("#signup");
+        container.insertBefore(div, form);
+        setTimeout(function(){
+            document.querySelector(`.${className}`).remove();
+        },3000);
     }
-    
-    
-    
 

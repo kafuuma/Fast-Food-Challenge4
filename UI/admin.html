@@ -5,70 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="static/style.css">
-    <script type="text/javascript" src="static/script.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script type="text/javascript" src="js/orders.js"></script>
     <title>Fast Food App</title>
 </head>
 <body>
     <nav class="nav-bar">
         <img class="logo" src="images/logo2.jpeg" alt="Logo" height="100px" width="100px">
-        <input type="text" class="search" id = "search" placeholder="search..">
+        <div class="actions">
+            <button class="login-1 dropbtn"  id="actions" >actions</button>
+            <ul id="dropdown" class="dropdown-content" >
+                <li id="addmenu" >add menu</li>
+                <li id="displaymenu" >display menu</li>
+                <li id="allorders">all orders</li>
+                <li id="vieworder" >view order</li>
+            </ul>
+        </div>
+        <input type="search" class="search" id = "search" placeholder="search..">
         <a href="#">HELP</a>
         <a href="signup.html">HOME</a>
-        <a class="login-1" href="signup.html" id = "log-in">LOGOUT</a>
+        <a class="login-1" id ="log-out">LOGOUT</a>
     </nav>
-    <table class="table-data"   id="admin-history">
-        <thead>
-            <tr>
-                <th>Orde_Id</th>
-                <th>Date</th>
-                <th>Order</th>
-                <th>Description</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>001</td>
-                <td>9.13.2018</td>
-                <td>Pizza</td>
-                <td>this is served with 20mls of soda</td>
-                <td><select name="status" id="status"><option value="Approved">Approved</option>
-                <option value="Decline">Declined</option><option value="Delivered">Delivered</option>
-                    <option value="Pending" selected>Pending</option></select></td>
-                <td><button>Trash</button></td>
-            </tr>
-            <tr>
-                <td>002</td>
-                <td>10.9.2018</td>
-                <td>chicken bucket</td>
-                <td>This is served with 8 peaces of chicken</td>
-                <td><select name="status" id="status"><option value="Approved">Approved</option>
-                <option value="Decline">Declined</option><option value="Delivered">Delivered</option>
-                    <option value="Pending" selected>Pending</option></select></td>
-                <td><button>Trash</button></td>
-            </tr>
-            <tr>
-                <td>002</td>
-                <td>10.9.2018</td>
-                <td>chicken bucket</td>
-                <td>This is served with 8 peaces of chicken</td>
-                <td><select name="status" id="status"><option value="Approved">Approved</option>
-                    <option value="Decline">Declined</option><option value="Delivered">Delivered</option>
-                        <option value="Pending" selected>Pending</option></select></td>
-                    <td><button>Trash</button></td>
-            </tr>
-            <tr>
-                <td>002</td>
-                <td>10.9.2018</td>
-                <td>chicken bucket</td>
-                <td>This is served with 8 peaces of chicken</td>
-                <td><select name="status" id="status"><option value="Approved">Approved</option>
-                    <option value="Decline">Declined</option><option value="Delivered">Delivered</option>
-                    <option value="Pending" selected>Pending</option></select></td>
-                <td><button>Trash</button></td>
-            </tr>
-        </tbody>
-    </table>
+   <div class="menu-block" id="menu-block">
+       <form action="" id="add-menu">
+           <div class="menu-input">
+                <input type="text" id="menu_name" placeholder=" menu name">
+           </div>
+           <div class="menu-input">
+                <input type="number" id="menu_price" placeholder="menu price" >
+           </div>
+           <div class="menu-input">
+            <input type="text" id="image" placeholder="image" >
+           </div>
+           <div class="menu-input">
+                <textarea name="menu_description" id="desciption" cols="30" rows="8"
+                   placeholder="type menu desciption"></textarea>
+           </div>
+           <div class="menu-input">
+               <input type="submit" value="Create">
+           </div>
+       </form>
+   </div>
+   <div class="order-block" id="order-block">
+       <form action="" id="singleorder">
+           <div class="order-input">
+               <input type="text" id="order-id" placeholder="order Id">
+           </div>
+           <div class="order-input">
+               <input type="submit" value="Fetch">
+           </div>
+       </form>
+   </div>
+   <div id="res_message">
+       <div id="after"></div>
+   </div>
+   <div class="backround-logo"></div>
+   <div id="signle_order"></div>
+   <div id="fetch_menu"></div>
+   <div id="all_orders"></div>
 </body>
 </html>
