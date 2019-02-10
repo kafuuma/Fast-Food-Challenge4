@@ -23,7 +23,7 @@ function signUp(e){
             confirm_password: confirm_password_
     }
 fetch(
-    "https://fastfasatfood.herokuapp.com/api/v1/auth/signup",
+    "https://fast-food-reactify.herokuapp.com/api/v1/auth/signup",
     {
         method: "POST",
         headers:{
