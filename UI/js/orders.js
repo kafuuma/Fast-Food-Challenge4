@@ -2,8 +2,8 @@
 
 //access token
 console.log(localStorage["auth-token"]);
-let url1="https://fastfasatfood.herokuapp.com/api/v1/users/orders";
-let url2="https://fastfasatfood.herokuapp.com/api/v1/orders";
+let url1="https://fast-food-reactify.herokuapp.com/api/v1/users/orders";
+let url2="https://fast-food-reactify.herokuapp.com/api/v1/orders";
 
 window.addEventListener("load", startOrderActions);
 function startOrderActions(){
