@@ -18,7 +18,7 @@ function logIn(e){
 fetch(
 
     
-    "https://fastfasatfood.herokuapp.com/api/v1/auth/login",
+    "https://fast-food-reactify.herokuapp.com/api/v1/auth/login",
     {
         method: "POST",
         headers:{
